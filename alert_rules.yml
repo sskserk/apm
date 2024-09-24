@@ -1,0 +1,11 @@
+groups:
+  - name: ExampleAlertGroup
+    rules:
+      - alert: CounterValueBelowThreshold
+        expr: increase(my_counter_total[10s])/2 > 5
+        for: 10s  # Wait for 1 minute before firing the alert
+        labels:
+          severity: critical
+        annotations:
+          summary: "Counter value below threshold"
+          description: "The my_custom_counter has dropped below 10. Current value: {{ $value }}"

@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 5s  # Set the scrape interval to 15 seconds (default is 1 minute)
+
+scrape_configs:
+  - job_name: 'external-metrics'
+    scrape_interval: 5s  # Override the global interval for this job
+    static_configs:
+      - targets: [ "192.168.43.189:8080" ]
+
+
+rule_files:
+  - "alert_rules.yml"
